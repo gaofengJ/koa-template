@@ -1,0 +1,31 @@
+name: Build stock-back and deploy to aliyun
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+  pull_request:
+    types:
+      - closed
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Install npm dependencies
+      run: npm install --legacy-peer-deps
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: '-rltgoDzvO --delete' # easingthemes/ssh-deploy使用的参数
+          # SOURCE: dist # 这是要复制到阿里云静态服务器的文件夹名称
+          REMOTE_HOST: '' # 你的阿里云公网地址
+          REMOTE_USER: root # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
+          TARGET: /home/demo # 打包后的 dist 文件夹将放在 /home/demo
