@@ -1,5 +1,4 @@
 import schedule from 'node-schedule';
-import { dateFormat } from 'mufeng-tools';
 
 // 定义规则
 const rule = new schedule.RecurrenceRule();
@@ -15,7 +14,7 @@ rule.second = 0;
 const dailyImport = () => {
   console.log('定时任务-导入每日数据启动');
   schedule.scheduleJob(rule, async () => {
-    console.log(`定时任务-导入每日数据开始，导入日期：${dateFormat(new Date(), 'yyyyMMdd')}`);
+    console.log(`定时任务-导入每日数据开始，导入日期：${new Date()}`);
   });
 };
 

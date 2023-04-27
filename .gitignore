@@ -1,8 +1,6 @@
 .DS_Store
 node_modules
 /dist
-yarn.lock
-package-lock.json
 # local env files
 .env.local
 .env.*.local
@@ -22,6 +20,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-# db config
-db.config.ts

@@ -1,9 +1,5 @@
 import Axios, { AxiosRequestConfig } from 'axios';
-// import { TUSHARE_CONF } from '@/config/db';
 
-/**
- * @description
- */
 const client = Axios.create({
   method: 'post',
   url: '/',
@@ -14,7 +10,7 @@ const client = Axios.create({
   transformRequest: [
     (body) => JSON.stringify(
       Object.assign(body, {
-        // token: TUSHARE_CONF.token,
+        // token,
       }),
     ),
   ],
@@ -35,9 +31,9 @@ const request = async (config: AxiosRequestConfig) => {
   };
 };
 
-export const getTradeCal = (year: string): Promise<Base.TypeRes> => request({
+export const getData = (year: string): Promise<Base.TypeRes> => request({
   data: {
-    api_name: 'trade_cal',
+    api_name: 'date',
     params: {
       start_date: `${year}0101`,
       end_date: `${year}1231`,

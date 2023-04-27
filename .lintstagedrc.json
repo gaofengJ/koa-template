@@ -1,0 +1,4 @@
+{
+  "*.{js,vue,jsx,tsx,ts}": ["eslint"],
+  "*.md": ["prettier"]
+}

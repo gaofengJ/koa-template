@@ -1,3 +1,4 @@
+import TestService from '@/services/test';
 import {
   JsonController,
   Get,
@@ -11,14 +12,19 @@ import {
 
 @JsonController('/test')
 export default class TestController {
-  @Get('/')
-  getAll(@QueryParam('enable') enable: string) {
-    return `测试-查询所有用户，状态：${enable || '在线'}`;
+  @Get()
+  getList(@QueryParam('online') online?: string) {
+    console.log(online);
+    return [1, 2, 3].map((i: number) => ({
+      id: i,
+      online: i % 2 === 0,
+    }));
   }
 
   @Get('/:id')
   getTest(@Param('id') testId: string) {
-    return `测试-查询id为${testId}的用户`;
+    const str = TestService.getTest(testId);
+    return `测试-查询id为${str}的用户`;
   }
 
   @Post('/create')
