@@ -1,7 +1,7 @@
 {
-  "name": "service-gateway",
+  "name": "koa-template",
   "version": "1.0.0",
-  "description": "HR前端业务网关",
+  "description": "koa模版",
   "main": "index.ts",
   "scripts": {
     "dev": "nodemon",
